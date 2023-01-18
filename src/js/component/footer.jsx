@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import "../../styles/footer.css";
 
 export const Footer = () => (
 	<footer className="footer text-center bg-black">
-		<p>
-			Made with <i className="fa fa-heart text-white" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy 2023</a>
+		<p className="credits">Made by{" "}
+			<a style={{color:"white"}} href="https://github.com/GabRoma">
+			<i className="far fa-starfighter"/>Gab Roma</a>
 		</p>
 	</footer>
 );

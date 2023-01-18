@@ -4,7 +4,8 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { CharacterView } from "./views/characterview";
+import { PlanetView } from "./views/planetview";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
@@ -18,17 +19,18 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
+		<div className="wrapper bg-dark h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
+						<Route path="/characterview/:theid" element={<CharacterView />} />
+						<Route path="/planetview/:theid" element={<PlanetView/>}/>
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
-					<Footer />
+					<Footer/>
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
