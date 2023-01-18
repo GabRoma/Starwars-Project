@@ -1,3 +1,4 @@
+//context
 import React, { useState, useEffect } from "react";
 import getState from "./flux.js";
 
@@ -31,6 +32,9 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+			state.actions.fetchCharacters();
+			state.actions.fetchPlanets();
+			state.actions.fetchShips();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

@@ -1,3 +1,4 @@
+//layout
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
@@ -6,6 +7,7 @@ import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo";
 import { CharacterView } from "./views/characterview";
 import { PlanetView } from "./views/planetview";
+import { ShipView } from "./views/shipview"
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
@@ -28,6 +30,7 @@ const Layout = () => {
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/characterview/:theid" element={<CharacterView />} />
 						<Route path="/planetview/:theid" element={<PlanetView/>}/>
+						<Route path="/shipview/:theid" element={<ShipView/>}></Route>
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer/>
