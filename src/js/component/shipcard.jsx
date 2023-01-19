@@ -1,9 +1,9 @@
-//spaceship card
+//Spaceship Card
 import React, {useEffect, useState, useContext} from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-export const ShipCard = ({name, id}) =>{
+export const ShipCard = ({name, id, item}) =>{
   const{actions}=useContext(Context);
   const viewType = "/shipview/";
   return(
@@ -15,7 +15,7 @@ export const ShipCard = ({name, id}) =>{
   </div>
   <div className="card-footer d-flex justify-content-between">
   <Link to={viewType+id} className="btn btn-outline-warning">Learn more!</Link>
-  <button className="btn btn-outline-danger" onClick={()=>actions.addFavorite({name, id, viewType})}><i className="fa fa-heart"/></button>
+  <button className="btn btn-outline-danger" onClick={()=>actions.addFavorite({name, id, item, viewType})}><i className="fa fa-heart"/></button>
   </div>
 </div>
   )

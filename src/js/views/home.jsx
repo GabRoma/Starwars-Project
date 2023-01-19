@@ -46,7 +46,7 @@ export const Home = () =>{
         <div className="d-flex flex-row flex-nowrap overflow-auto">
         <div className="d-flex">
         {store.character.map((item, index) => {
-            return<Card key={index} name={item.name} id={item.uid}/>
+            return<Card key={index} name={item.name} id={item.uid} item={item}/>
         })}
         </div>
         </div>
@@ -64,7 +64,7 @@ export const Home = () =>{
         <div className="d-flex flex-row flex-nowrap overflow-auto">
         <div className="d-flex">
         {store.ship.map((item, index) => {
-            return<ShipCard key={index} name={item.name} id={item.uid}/>
+            return<ShipCard key={index} name={item.name} id={item.uid} item={item}/>
         })}
         </div>
         </div>
