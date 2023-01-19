@@ -5,6 +5,7 @@ import { Context } from "../store/appContext.js";
 
 export const Card = ({name, id}) =>{
   const{actions}=useContext(Context);
+  const viewType = "/characterview/";
   return(
     <div className="card mx-1 bg-black text-white" style={{width: "18rem"}}>
   <img src={"https://starwars-visualguide.com/assets/img/characters/"+(id)+".jpg"} className="card-img-top" alt="..."></img>
@@ -13,8 +14,8 @@ export const Card = ({name, id}) =>{
     <p className="card-text">some StarWars character</p>
   </div>
   <div className="card-footer d-flex justify-content-between">
-  <Link to={"/characterview/"+id} className="btn btn-outline-warning">Learn more!</Link>
-  <button className="btn btn-outline-danger" onClick={()=>actions.addFavorite({name, id})}><i className="fa fa-heart"/></button>
+  <Link to={viewType+id} className="btn btn-outline-warning">Learn more!</Link>
+  <button className="btn btn-outline-danger" onClick={()=>actions.addFavorite({name, id, viewType})}><i className="fa fa-heart"/></button>
   </div>
 </div>
   )

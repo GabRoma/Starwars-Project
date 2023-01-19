@@ -8,15 +8,7 @@ export const PlanetView = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [planet, setPlanet] = useState({});
-
-  function fetchPlan() {
-    fetch("https://www.swapi.tech/api/planets/" + params.theid)
-      .then((res) => res.json())
-      .then((data) => setPlanet(data.result.properties));
-  }
-
-  useEffect(() => fetchPlan(), []);
+  useEffect(() => actions.fetchPlanetsData(params.theid), [store.planetData]);
 
   return (
     <div className="jumbotron d-flex h-75 p-4 m-4 border border-warning border rounded">
@@ -30,7 +22,7 @@ export const PlanetView = (props) => {
         alt="..."
       ></img>
       <div className="planData p-4" style={{ color: "white" }}>
-        <h4>{planet.name}</h4>
+        <h4>{store.planetData.name}</h4>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima,
           perspiciatis! Voluptas nulla quibusdam eum ducimus? Quia distinctio
@@ -45,56 +37,56 @@ export const PlanetView = (props) => {
             style={{ color: "white" }}
           >
             Diameter:<br></br>
-            {planet.diameter}
+            {store.planetData.diameter}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Rotation Period:<br></br>
-            {planet.rotation_period}
+            {store.planetData.rotation_period}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Orbital Period:<br></br>
-            {planet.orbital_period}
+            {store.planetData.orbital_period}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Gravity:<br></br>
-            {planet.gravity}
+            {store.planetData.gravity}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Population:<br></br>
-            {planet.population}
+            {store.planetData.population}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Climate:<br></br>
-            {planet.climate}
+            {store.planetData.climate}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Terrain:<br></br>
-            {planet.terrain}
+            {store.planetData.terrain}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Surface Water:<br></br>
-            {planet.surface_water}
+            {store.planetData.surface_water}
           </li>
         </ul>
         <hr className="my-4" />

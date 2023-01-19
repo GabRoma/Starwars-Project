@@ -1,4 +1,4 @@
-//welcome single
+//Character View
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
@@ -8,15 +8,7 @@ export const CharacterView = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [character, setCharacter] = useState({});
-
-  function fetchChars() {
-    fetch("https://www.swapi.tech/api/people/" + params.theid)
-      .then((res) => res.json())
-      .then((data) => setCharacter(data.result.properties));
-  }
-
-  useEffect(() => fetchChars(), []);
+  useEffect(() => actions.fetchCharactersData(params.theid), [store.characterData]);
 
   return (
     <div className="jumbotron d-flex h-75 p-4 m-4 border border-warning border rounded">
@@ -30,64 +22,66 @@ export const CharacterView = (props) => {
         alt="..."
       ></img>
       <div className="charData p-4" style={{ color: "white" }}>
-        <h4>{character.name}</h4>
+        <h4>{store.characterData.name}</h4>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima,
           perspiciatis! Voluptas nulla quibusdam eum ducimus? Quia distinctio
           odit ut nam exercitationem quibusdam doloribus quisquam, reprehenderit
           saepe nihil molestias nemo fuga.
         </p>
-		<hr className="my-4" />
-		<h6><u>Data table</u></h6>
+        <hr className="my-4" />
+        <h6>
+          <u>Data table</u>
+        </h6>
         <ul className="d-flex text-center">
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Height:<br></br>
-            {character.height}
+            {store.characterData.height}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Mass:<br></br>
-            {character.mass}
+            {store.characterData.mass}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Gender:<br></br>
-            {character.gender}
+            {store.characterData.gender}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Birth Year:<br></br>
-            {character.birth_year}
+            {store.characterData.birth_year}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Hair Color:<br></br>
-            {character.hair_color}
+            {store.characterData.hair_color}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Skin Color:<br></br>
-            {character.skin_color}
+            {store.characterData.skin_color}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Eye Color:<br></br>
-            {character.eye_color}
+            {store.characterData.eye_color}
           </li>
         </ul>
         <hr className="my-4" />

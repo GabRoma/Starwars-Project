@@ -1,22 +1,24 @@
-//ship view
+//Ship View
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const ShipView = (props) => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [ship, setShip] = useState({});
+  useEffect(() => actions.fetchShipData(params.theid), [store.shipData]);
 
-  function fetchShip() {
-    fetch("https://www.swapi.tech/api/starships/" + params.theid)
-      .then((res) => res.json())
-      .then((data) => setShip(data.result.properties));
-  }
+  // const [ship, setShip] = useState({});
 
-  useEffect(() => fetchShip(), []);
+  // function fetchShip() {
+  //   fetch("https://www.swapi.tech/api/starships/" + params.theid)
+  //     .then((res) => res.json())
+  //     .then((data) => setShip(data.result.properties));
+  // }
+
+  // useEffect(() => fetchShip(), []);
 
   return (
     <div className="jumbotron d-flex h-75 p-4 m-4 border border-warning border rounded">
@@ -30,7 +32,7 @@ export const ShipView = (props) => {
         alt="..."
       ></img>
       <div className="shipData p-4" style={{ color: "white" }}>
-        <h4>{ship.name}</h4>
+        <h4>{store.shipData.name}</h4>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima,
           perspiciatis! Voluptas nulla quibusdam eum ducimus? Quia distinctio
@@ -45,56 +47,56 @@ export const ShipView = (props) => {
             style={{ color: "white" }}
           >
             Model:<br></br>
-            {ship.model}
+            {store.shipData.model}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Class:<br></br>
-            {ship.starship_class}
+            {store.shipData.starship_class}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Manufacturer:<br></br>
-            {ship.manufacturer}
+            {store.shipData.manufacturer}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Length:<br></br>
-            {ship.length}
+            {store.shipData.length}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Crew:<br></br>
-            {ship.crew}
+            {store.shipData.crew}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Max Speed:<br></br>
-            {ship.max_atmosphering_speed}
+            {store.shipData.max_atmosphering_speed}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Rating:<br></br>
-            {ship.hyperdrive_rating}
+            {store.shipData.hyperdrive_rating}
           </li>
           <li
             className="list-group-item d-flex bg-dark border border-warning"
             style={{ color: "white" }}
           >
             Consumables:<br></br>
-            {ship.consumables}
+            {store.shipData.consumables}
           </li>
         </ul>
         <hr className="my-4" />

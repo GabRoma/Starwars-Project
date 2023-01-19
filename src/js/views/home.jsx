@@ -1,7 +1,7 @@
 //welcome home
 import React, {useEffect, useState, useContext} from "react";
 import { Card } from "../component/card.jsx";
-import { PlanCard } from "../component/planetcard.jsx";
+import { PlanetCard } from "../component/planetcard.jsx";
 import { ShipCard } from "../component/shipcard.jsx";
 import {Context} from "../store/appContext.js"
 import "../../styles/home.css"
@@ -50,16 +50,16 @@ export const Home = () =>{
         })}
         </div>
         </div>
-        <hr></hr>
+        <hr/>
         <h2 style={{color:"white"}}>Planets</h2>
         <div className="d-flex flex-row flex-nowrap overflow-auto">
         <div className="d-flex">
         {store.planet.map((item, index) => {
-            return<PlanCard key={index} name={item.name} id={item.uid}/>
+            return<PlanetCard key={index} name={item.name} id={item.uid}/>
         })}
         </div>
 	    </div>
-        <hr></hr>
+        <hr/>
         <h2 style={{color:"white"}}>Spaceships</h2>
         <div className="d-flex flex-row flex-nowrap overflow-auto">
         <div className="d-flex">

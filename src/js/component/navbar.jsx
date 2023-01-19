@@ -1,11 +1,12 @@
 //navbar
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
 export const Navbar = () => {
   const { store, setStore } = useContext(Context);
   const{actions}=useContext(Context);
+  const params = useParams();
 
   return (
     <nav className="navbar navbar-black bg-black p-2">
@@ -48,10 +49,10 @@ export const Navbar = () => {
                   key={index}
                   className="dropdown-menu-item d-flex justify-content-between"
                 >
-                  <Link to={"/characterview/" + item.id} style={{color:"white"}}>{item.name}</Link>
+                  <Link to={item.viewType + item.id} style={{color:"white"}}>{item.name}</Link>
                   <i
                     className="far fa-times-circle"
-                    onClick={()=>actions.quitFavorite(index)}
+                    onClick={()=>actions.quitFavorite(item)}
                   />
                 </li>
                 

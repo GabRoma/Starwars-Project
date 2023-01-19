@@ -18,8 +18,11 @@ const getState = ({
                 }
             ],
             character: [],
+            characterData: {},
             planet: [],
+            planetData: {},
             ship: [],
+            shipData: [],
             favorites: []
         },
         actions: {
@@ -35,11 +38,27 @@ const getState = ({
                     }))
                     .catch(err => console.error(err))
             },
+            fetchCharactersData: (id) => {
+                fetch("https://www.swapi.tech/api/people/" + id)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        characterData: data.result.properties
+                    }))
+                    .catch(err => console.error(err))
+            },
             fetchPlanets: () => {
                 fetch("https://www.swapi.tech/api/planets/")
                     .then(res => res.json())
                     .then(data => setStore({
                         planet: data.results
+                    }))
+                    .catch(err => console.error(err))
+            },
+            fetchPlanetsData: (id) => {
+                fetch("https://www.swapi.tech/api/planets/" + id)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        planetData: data.result.properties
                     }))
                     .catch(err => console.error(err))
             },
@@ -51,19 +70,28 @@ const getState = ({
                     }))
                     .catch(err => console.error(err))
             },
+            fetchShipData: (id) => {
+                fetch("https://www.swapi.tech/api/starships/" + id)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        shipData: data.result.properties
+                    }))
+                    .catch(err => console.error(err))
+            },
             addFavorite: (name) => {
-                setStore({
-                    favorites: (getStore().favorites.concat(name))
-                })
+                if (getStore().favorites.includes(name)) {
+                    getActions().quitFavorite(name)
+                } else {
+                    setStore({
+                        favorites: (getStore().favorites.concat(name))
+                    })
+                }
                 console.log(getStore().favorites)
             },
-            quitFavorite: (index) => {
+            quitFavorite: (name) => {
                 setStore({
-                    favorites: (getStore().favorites.filter((_, currentIndex) => {
-                        return index != currentIndex
-                    }))
+                    favorites: (getStore().favorites.filter((i) => i != name))
                 })
-                console.log(index)
             },
             changeColor: (index, color) => {
                 //get the store
