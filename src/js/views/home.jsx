@@ -55,7 +55,7 @@ export const Home = () =>{
         <div className="d-flex flex-row flex-nowrap overflow-auto">
         <div className="d-flex">
         {store.planet.map((item, index) => {
-            return<PlanetCard key={index} name={item.name} id={item.uid}/>
+            return<PlanetCard key={index} name={item.name} id={item.uid} item={item}/>
         })}
         </div>
 	    </div>

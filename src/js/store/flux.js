@@ -78,19 +78,19 @@ const getState = ({
                     }))
                     .catch(err => console.error(err))
             },
-            addFavorite: (name) => {
-                if (getStore().favorites.includes(name)) {
-                    getActions().quitFavorite(name)
+            addFavorite: (item) => {
+                if (getStore().favorites.includes(item)) {
+                    getActions().quitFavorite(item)
                 } else {
                     setStore({
-                        favorites: (getStore().favorites.concat(name))
+                        favorites: (getStore().favorites.concat(item))
                     })
                 }
                 console.log(getStore().favorites)
             },
-            quitFavorite: (name) => {
+            quitFavorite: (item) => {
                 setStore({
-                    favorites: (getStore().favorites.filter((i) => i != name))
+                    favorites: (getStore().favorites.filter((i) => i != item))
                 })
             },
             changeColor: (index, color) => {
