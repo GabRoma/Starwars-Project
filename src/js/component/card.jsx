@@ -14,7 +14,7 @@ export const Card = ({name, id}) =>{
   </div>
   <div className="card-footer d-flex justify-content-between">
   <Link to={"/characterview/"+id} className="btn btn-outline-warning">Learn more!</Link>
-  <button className="btn btn-outline-danger" onClick={()=>actions.addFavorite()}><i className="fa fa-heart"/></button>
+  <button className="btn btn-outline-danger" onClick={()=>actions.addFavorite({name, id})}><i className="fa fa-heart"/></button>
   </div>
 </div>
   )

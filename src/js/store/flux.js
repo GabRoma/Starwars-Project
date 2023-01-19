@@ -18,8 +18,8 @@ const getState = ({
                 }
             ],
             character: [],
-			planet: [],
-			ship: [],
+            planet: [],
+            ship: [],
             favorites: []
         },
         actions: {
@@ -31,28 +31,39 @@ const getState = ({
                 fetch("https://www.swapi.tech/api/people/")
                     .then(res => res.json())
                     .then(data => setStore({
-                        character:data.results
+                        character: data.results
                     }))
                     .catch(err => console.error(err))
             },
-			fetchPlanets: () => {
+            fetchPlanets: () => {
                 fetch("https://www.swapi.tech/api/planets/")
                     .then(res => res.json())
                     .then(data => setStore({
-                        planet:data.results
+                        planet: data.results
                     }))
                     .catch(err => console.error(err))
             },
-			fetchShips: () => {
+            fetchShips: () => {
                 fetch("https://www.swapi.tech/api/starships/")
                     .then(res => res.json())
                     .then(data => setStore({
-                        ship:data.results
+                        ship: data.results
                     }))
                     .catch(err => console.error(err))
             },
-            addFavorite: () => {
-                console.log("funciona");
+            addFavorite: (name) => {
+                setStore({
+                    favorites: (getStore().favorites.concat(name))
+                })
+                console.log(getStore().favorites)
+            },
+            quitFavorite: (index) => {
+                setStore({
+                    favorites: (getStore().favorites.filter((_, currentIndex) => {
+                        return index != currentIndex
+                    }))
+                })
+                console.log(index)
             },
             changeColor: (index, color) => {
                 //get the store
