@@ -8,37 +8,7 @@ import "../../styles/home.css"
 
 export const Home = () =>{
 
-    //cotexto
-
     const {store}=useContext(Context);
-
-    //settings characters
-
-    // const [character, setCharacter] = useState([]);
-
-    // function fetchChars (){
-    //     fetch("https://www.swapi.tech/api/people/")
-    //     .then(res => res.json())
-    //     .then((data) => setCharacter(data.results))
-    // }
-
-    // useEffect(() =>
-    // fetchChars()
-    // ,[]);
-
-    //settings planets
-
-    // const [planet, setPlanet] = useState([]);
-
-    // function fetchPlans (){
-    //     fetch("https://www.swapi.tech/api/planets/")
-    //     .then(res => res.json())
-    //     .then((data) => setPlanet(data.results))
-    // }
-
-    // useEffect(() =>
-    // fetchPlans()
-    // ,[]);
 
     return(
     <div className="card-group bg-dark p-4">

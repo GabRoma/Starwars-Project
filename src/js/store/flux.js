@@ -79,32 +79,28 @@ const getState = ({
                     .catch(err => console.error(err))
             },
             addFavorite: (item) => {
-                if (getStore().favorites.includes(item)) {
-                    getActions().quitFavorite(item)
+                if (getStore().favorites.some(elem => elem.name === item.name)) {
+                    getActions().quitFavorite(item);
                 } else {
                     setStore({
                         favorites: (getStore().favorites.concat(item))
-                    })
+                    });
+                    console.log(`${item.name} added to your favorites.`);
                 }
-                console.log(getStore().favorites)
+                console.log(getStore().favorites);
             },
             quitFavorite: (item) => {
                 setStore({
-                    favorites: (getStore().favorites.filter((i) => i != item))
-                })
+                    favorites: getStore().favorites.filter(i => i.name !== item.name)
+                });
+                console.log(`${item.name} removed from your favorites.`);
             },
             changeColor: (index, color) => {
-                //get the store
                 const store = getStore();
-
-                //we have to loop the entire demo array to look for the respective index
-                //and change its color
                 const demo = store.demo.map((elm, i) => {
                     if (i === index) elm.background = color;
                     return elm;
                 });
-
-                //reset the global store
                 setStore({
                     demo: demo
                 });
