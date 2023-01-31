@@ -1,5 +1,6 @@
 //welcome home
 import React, {useEffect, useState, useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "../component/card.jsx";
 import { PlanetCard } from "../component/planetcard.jsx";
 import { ShipCard } from "../component/shipcard.jsx";
@@ -8,7 +9,12 @@ import "../../styles/home.css"
 
 export const Home = () =>{
 
+    const navigate = useNavigate();
     const {store}=useContext(Context);
+
+    useEffect(() => {
+        store.auth === false ? (navigate("/"), alert("Access Denied: please log in first")):console.log("May the force be with you!")
+    }, []);
 
     return(
     <div className="card-group bg-dark p-4">

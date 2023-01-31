@@ -10,16 +10,6 @@ export const ShipView = (props) => {
 
   useEffect(() => actions.fetchShipData(params.theid), [store.shipData]);
 
-  // const [ship, setShip] = useState({});
-
-  // function fetchShip() {
-  //   fetch("https://www.swapi.tech/api/starships/" + params.theid)
-  //     .then((res) => res.json())
-  //     .then((data) => setShip(data.result.properties));
-  // }
-
-  // useEffect(() => fetchShip(), []);
-
   return (
     <div className="jumbotron d-flex h-75 p-4 m-4 border border-warning border rounded">
       <img
@@ -101,7 +91,7 @@ export const ShipView = (props) => {
         </ul>
         <hr className="my-4" />
 
-        <Link to="/">
+        <Link to="/home">
           <span className="btn btn-outline-warning" href="#" role="button">
             Back home
           </span>

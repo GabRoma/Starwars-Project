@@ -2,11 +2,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-  const { store, setStore } = useContext(Context);
-  const{actions}=useContext(Context);
+  const { store, setStore, actions } = useContext(Context);
   const params = useParams();
+  const navigate = useNavigate()
+
+  function handleLogout() {
+		actions.logout()
+		navigate("/")
+	}
 
   return (
     <nav className="navbar navbar-black bg-black p-2">
@@ -20,7 +26,7 @@ export const Navbar = () => {
         </span>
       </Link>
       <div className="ml-auto">
-        <button className="btn btn-outline-warning nav-item dropdown p-0" onClick={(e) => e.stopPropagation()}>
+        {store.auth === true?<button className="btn btn-outline-warning nav-item dropdown p-0" onClick={(e) => e.stopPropagation()}>
           <a
             className="nav-link dropdown-toggle"
             href="#"
@@ -58,7 +64,8 @@ export const Navbar = () => {
                 
             ))}
           </ul>
-        </button>
+        </button>: null}
+        {store.auth === true? <button className="btn btn-outline-warning nav-item p-2 ms-1" onClick={handleLogout} style={{ color: "white" }}>Log out</button> : null}
       </div>
     </nav>
   );

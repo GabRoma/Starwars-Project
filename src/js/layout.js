@@ -7,11 +7,12 @@ import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo";
 import { CharacterView } from "./views/characterview";
 import { PlanetView } from "./views/planetview";
-import { ShipView } from "./views/shipview"
-import injectContext from "./store/appContext";
-
+import { ShipView } from "./views/shipview";
+import { Form } from "./views/login";
+import { Signup } from "./views/signup";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
+import injectContext from "./store/appContext";
 
 
 //create your first component
@@ -26,7 +27,9 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
-						<Route path="/" element={<Home />} />
+						<Route path="/" element={<Form/>}/>
+						<Route path="/home" element={<Home />} />
+						<Route path="/signup" element={<Signup/>}/>
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/characterview/:theid" element={<CharacterView />} />
 						<Route path="/planetview/:theid" element={<PlanetView/>}/>

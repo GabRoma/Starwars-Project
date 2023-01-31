@@ -86,7 +86,7 @@ export const CharacterView = (props) => {
         </ul>
         <hr className="my-4" />
 
-        <Link to="/">
+        <Link to="/home">
           <span className="btn btn-outline-warning" href="#" role="button">
             Back home
           </span>
